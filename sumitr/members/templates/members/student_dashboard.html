@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }}!</h2>
+
+<div>
+    <h3>📚 My Work</h3>
+    <p>View and complete your assigned homework.</p>
+    <a href="{% url 'my_work' %}">Go to My Work</a>
+</div>
+
+<div>
+    <h3>📝 Practice Quiz</h3>
+    <p>Attempt extra quizzes and get personalized feedback.</p>
+    <a href="{% url 'practice_quiz' %}">Go to Practice Quiz</a>
+</div>
+
+<div>
+    <h3>📊 My Progress</h3>
+    <p>Track your topics practiced, acquired skills, and mastered skills.</p>
+    <a href="{% url 'my_progress' %}">View Progress</a>
+</div>
+
+<div>
+    <h3>🏆 Badges</h3>
+    <p>See your earned badges and leaderboard ranking.</p>
+    <a href="{% url 'badges' %}">View Badges</a>
+</div>
+{% endblock %}
+

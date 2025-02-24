@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sumit{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  <!-- Link to CSS -->
+</head>
+<body>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                {% if user.role == "student" %}
+                    <li><a href="{% url 'student_dashboard' %}">Student Dashboard</a></li>
+                    <li><a href="{% url 'my_work' %}">My Work</a></li>
+                    <li><a href="{% url 'practice_quiz' %}">Practice Quiz</a></li>
+                    <li><a href="{% url 'my_progress' %}">My Progress</a></li>
+                    <li><a href="{% url 'badges' %}">Badges</a></li>
+                {% elif user.role == "teacher" %}
+                    <li><a href="{% url 'teacher_dashboard' %}">Teacher Dashboard</a></li>
+                {% elif user.role == "senior_admin" %}
+                    <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+</body>
+</html>
+
